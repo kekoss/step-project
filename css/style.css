@@ -371,15 +371,11 @@ body {
 .about {
     background-image: url(../img/backgrounds/background-3.jpg);
     background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     padding: 98px 0;
 }
 .about__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
     max-width: 1160px;
 }
@@ -390,6 +386,18 @@ body {
 .about__quotes {
     margin-bottom: 36px;
 }
+.about__content {
+    display: none;
+}
+.about__content.active {
+    display: block;
+    animation-name: scale-in-center;
+    animation-duration: 0.7s;
+    animation-timing-function: ease;
+}
+@keyframes scale-in-center{
+    0%{transform:scale(0);opacity:1}100%{transform:scale(1);opacity:1}
+}
 .about__text {
     font-size: 16px;
     font-weight: 300;
@@ -397,7 +405,10 @@ body {
     color: #BBBBBB;
     margin-bottom: 37px;
 }
-.person {
+.about__person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .person__name {
     color: #18CFAB;
@@ -407,13 +418,16 @@ body {
     text-transform: uppercase;
 }
 .person__job {
-    margin-bottom: 38px;
+    margin-bottom: 76px;
     font-style: 13px;
     font-weight: 300;
     line-height: 27px;
+    color: #BBBBBB;
 }
 .person__image {
-    margin-bottom: 51px;
+    margin-bottom: 102px;
+    height: 160px;
+    width: 160px;
 }
 .person__image img {
     transform: scale(2);
@@ -422,9 +436,16 @@ body {
     display: flex;
     gap: 38px;
     align-items: center;
+    justify-content: center;
+}
+.slider__image {
+    margin: 0;
+    transition: all 0.5s ease 0s;
+    cursor: pointer;
 }
 .slider__image.active {
-    margin-top: -13px;
+    margin-top: -23px;
+    transition: all 0.5s ease 0s;
 }
 .slider__button {
     background: none;

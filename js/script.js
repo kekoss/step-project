@@ -72,5 +72,43 @@ function getItems(className){
     })
 }
 
+// slider
+let aboutContent = document.querySelectorAll('.about__content')
+let sliderImage = document.querySelectorAll('.slider__image')
 
+function changeSlide(){
+    let prevButton = document.querySelector('.slider__button-prev')
+    let nextButton = document.querySelector('.slider__button-next')
+    let currentIcon = 0
+    let currentContent = 0
 
+    const nextSlide = () => {
+        goToSlide(currentIcon + 1);
+        goToContent(currentContent + 1)
+    }
+    
+    const previousSlide = () => {
+        goToSlide(currentIcon - 1);
+        goToContent(currentContent - 1)
+    }
+
+    const goToSlide = (s) => {
+        sliderImage[currentIcon].classList.remove('active');
+        currentIcon = (s + sliderImage.length) % sliderImage.length;
+        sliderImage[currentIcon].classList.add('active');
+    }
+
+    const goToContent = (s) => {
+        aboutContent[currentContent].classList.remove('active')
+        currentContent = (s + aboutContent.length) % aboutContent.length
+        aboutContent[currentContent].classList.add('active')
+    }
+    nextButton.onclick = () => {
+        nextSlide();
+    };
+    prevButton.onclick = () => {
+        previousSlide();
+    };
+}
+
+changeSlide()
