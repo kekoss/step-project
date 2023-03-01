@@ -6,7 +6,7 @@ function showTabs(){
     for (let item of servicesTabTitles){
         item.addEventListener('click', function(){
             let currentTab = item
-            let tabId = currentTab.getAttribute('data-tab')
+            let tabId = currentTab.dataset.tab
             let currentContent = document.querySelector(tabId)
 
             if(!currentTab.classList.contains('active')){
@@ -73,7 +73,7 @@ function getItems(className){
 }
 
 // slider
-let aboutContent = document.querySelectorAll('.about__content')
+let sliderContent = document.querySelectorAll('.about__content')
 let sliderImage = document.querySelectorAll('.slider__image')
 
 function changeSlide(){
@@ -99,9 +99,9 @@ function changeSlide(){
     }
 
     const goToContent = (s) => {
-        aboutContent[currentContent].classList.remove('active')
-        currentContent = (s + aboutContent.length) % aboutContent.length
-        aboutContent[currentContent].classList.add('active')
+        sliderContent[currentContent].classList.remove('active')
+        currentContent = (s + sliderContent.length) % sliderContent.length
+        sliderContent[currentContent].classList.add('active')
     }
     nextButton.onclick = () => {
         nextSlide();
@@ -112,3 +112,18 @@ function changeSlide(){
 }
 
 changeSlide()
+// Load More
+
+let buttonMore = document.querySelector('.work__button')
+let workGallery = document.querySelector('.work__gallery')
+
+buttonMore.onclick = () => {
+   setTimeout(addImage, 1000)
+}
+
+function addImage(){
+    for (counter = 1;counter <= 12; counter++) {
+        workGallery.insertAdjacentHTML("beforeend", `<img src ="img/work/work-${counter}.jpg">`);
+    }
+    buttonMore.style.display = 'none'
+}

@@ -22,6 +22,7 @@ body {
 }
 .button:hover {
     background-color: #148e76;
+    cursor: pointer;
 }
 .title {
     text-align: center;
@@ -127,6 +128,11 @@ body {
 }
 .main-block__button {
     box-shadow: 0 -5px #fff;
+}
+.main-block__button:active {
+    box-shadow: none;
+    transform: translate(0, -5px);
+    transition: all 0.5s ease 0s;
 }
 .button-blue {
     background-color: #00CBF6;
@@ -261,6 +267,11 @@ body {
 .buy__button {
     box-shadow: 0 -5px #fff;
 }
+.buy__button:active {
+    box-shadow: none;
+    transform: translate(0, -5px);
+    transition: all 0.5s ease 0s;
+}
 .work {
     padding: 96px 0 99px 0;
     background-color: #E9EDEF;
@@ -292,17 +303,62 @@ body {
 .work-filter__item:hover {
     color:#18CFAB;
     border: 2px solid #18CFAB;
+    cursor: pointer;
 }
 .work__gallery {
     margin-bottom: 70px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
-.gallery-image:hover {
-    background: #E9EDEF;
-    opacity: 0.1;
-    transition: all 0.5s ease 0s;
+.gallery__image-content{
     position: relative;
+    width: 100%;
+    height: 100%;
+}
+.gallery__image-content::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #18CFAB;
+    top: 0;
+    left: 0;
+}
+.gallery__image-buttons {
+    margin-bottom: 23px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+.gallery__image-button {
+    width: 41px;
+    height: 40px;
+    border: 1px solid #18CFAB;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+.gallery__image-button:nth-child(2){
+    background-color: #18CFAB;
+    border: none;
+}
+.gallery__image-button:hover {
+    cursor: pointer;
+}
+.gallery__image-title {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 25px;
+    color: #18CFAB;
+    text-transform: uppercase;
+}
+.gallery__image-subtitle {
+    font-weight: 300;
+font-size: 12px;
+line-height: 25px;
+color: #8A8A8A;
 }
 .work__button {
     display: flex;
@@ -426,8 +482,6 @@ body {
 }
 .person__image {
     margin-bottom: 102px;
-    height: 160px;
-    width: 160px;
 }
 .person__image img {
     transform: scale(2);
