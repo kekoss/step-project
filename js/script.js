@@ -73,45 +73,38 @@ function getItems(className){
 }
 
 // slider
-let sliderContent = document.querySelectorAll('.about__content')
-let sliderImage = document.querySelectorAll('.slider__image')
+let sliderContent = document.querySelectorAll('.slider__content')
+let sliderIndicator = document.querySelectorAll('.slider__indicator')
+let prevButton = document.querySelector('.slider__button-prev')
+let nextButton = document.querySelector('.slider__button-next')
+let currentIcon = 0
+let currentContent = 0
 
-function changeSlide(){
-    let prevButton = document.querySelector('.slider__button-prev')
-    let nextButton = document.querySelector('.slider__button-next')
-    let currentIcon = 0
-    let currentContent = 0
-
-    const nextSlide = () => {
-        goToSlide(currentIcon + 1);
-        goToContent(currentContent + 1)
-    }
-    
-    const previousSlide = () => {
-        goToSlide(currentIcon - 1);
-        goToContent(currentContent - 1)
-    }
-
-    const goToSlide = (s) => {
-        sliderImage[currentIcon].classList.remove('active');
-        currentIcon = (s + sliderImage.length) % sliderImage.length;
-        sliderImage[currentIcon].classList.add('active');
-    }
-
-    const goToContent = (s) => {
-        sliderContent[currentContent].classList.remove('active')
-        currentContent = (s + sliderContent.length) % sliderContent.length
-        sliderContent[currentContent].classList.add('active')
-    }
-    nextButton.onclick = () => {
-        nextSlide();
-    };
-    prevButton.onclick = () => {
-        previousSlide();
-    };
+const nextSlide = () => {
+    goToSlide((currentIcon + 1) % sliderIndicator.length);
+    goToContent((currentContent + 1) % sliderContent.length)
 }
 
-changeSlide()
+const previousSlide = () => {
+    goToSlide((currentIcon - 1 + sliderIndicator.length) % sliderIndicator.length);
+    goToContent((currentContent - 1 + sliderContent.length) % sliderContent.length)
+}
+
+const goToSlide = (s) => {
+    sliderIndicator[currentIcon].classList.remove('active');
+    currentIcon = s;
+    sliderIndicator[currentIcon].classList.add('active');
+}
+
+const goToContent = (s) => {
+    sliderContent[currentContent].classList.remove('active')
+    currentContent = s;
+    sliderContent[currentContent].classList.add('active')
+}
+
+nextButton.addEventListener('click', nextSlide);
+prevButton.addEventListener('click', previousSlide);
+
 // Load More
 
 let buttonMore = document.querySelector('.work__button')

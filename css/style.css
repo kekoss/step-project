@@ -442,10 +442,10 @@ color: #8A8A8A;
 .about__quotes {
     margin-bottom: 36px;
 }
-.about__content {
+.slider__content {
     display: none;
 }
-.about__content.active {
+.slider__content.active {
     display: block;
     animation-name: scale-in-center;
     animation-duration: 0.7s;
@@ -486,18 +486,19 @@ color: #8A8A8A;
 .person__image img {
     transform: scale(2);
 }
-.slider {
+.slider__indicators {
     display: flex;
     gap: 38px;
     align-items: center;
     justify-content: center;
 }
-.slider__image {
+.slider__indicator {
     margin: 0;
     transition: all 0.5s ease 0s;
     cursor: pointer;
+  
 }
-.slider__image.active {
+.slider__indicator.active {
     margin-top: -23px;
     transition: all 0.5s ease 0s;
 }
